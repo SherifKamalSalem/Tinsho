@@ -8,8 +8,19 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class HomeController: UIViewController {
 
+    let cardViewModels: [CardViewModel] = {
+       let cardModels = [
+            User(name: "Kelly", age: 23, profession: "Music DJ", imageNames: ["kelly1", "kelly2", "kelly3"]),
+            User(name: "Jane", age: 18, profession: "Teacher", imageNames: ["jane1", "jane2", "jane3"]),
+            Advertiser(title: "Slide Out Menu", brandName: "let's build it", posterPhotoName: "slide_out_menu_poster")
+        ] as [CardViewModelDelegate]
+        
+        let cardVMs = cardModels.map({ return $0.toCardViewModel() })
+        return cardVMs
+    }()
+    
     let topStackView = TopNavigationStackView()
     let buttonsStackView = HomeBottomControlsStackView()
     let cardDeckView = UIView()
@@ -33,8 +44,11 @@ class ViewController: UIViewController {
     
     // setup the animation of card
     fileprivate func setupDummyCards() {
-        let cardView = CardView(frame: .zero)
-        cardDeckView.addSubview(cardView)
-        cardView.fillSuperview()
+        cardViewModels.forEach { (cardViewModel) in
+            let cardView = CardView(frame: .zero)
+            cardView.cardViewModel = cardViewModel
+            cardDeckView.addSubview(cardView)
+            cardView.fillSuperview()
+        }
     }
 }
