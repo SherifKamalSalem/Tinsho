@@ -8,13 +8,14 @@
 
 import UIKit
 import Firebase
+import ARSLineProgress
 
 class HomeController: UIViewController {
 
     var cardViewModels = [CardViewModel]()
     
     let topStackView = TopNavigationStackView()
-    let buttonsStackView = HomeBottomControlsStackView()
+    let bottomControls = HomeBottomControlsStackView()
     let cardDeckView = UIView()
     var lastFetchUser: User?
     
@@ -23,21 +24,31 @@ class HomeController: UIViewController {
         topStackView.settingButton.addTarget(self, action: #selector(handleSettingBtnPressed), for: .touchUpInside)
         setupLayout()
         setupFirestoreUserCards()
-        fetchUserFromFirestore()
+        fetchUsersFromFirestore()
+        
+        bottomControls.refreshBtn.addTarget(self, action: #selector(handleRefresh), for: .touchUpInside)
     }
     
-    fileprivate func fetchUserFromFirestore() {
+    fileprivate func fetchUsersFromFirestore() {
+        ARSLineProgress.show()
         let query = Firestore.firestore().collection("users").order(by: "uid").start(after: [lastFetchUser?.uid ?? ""]).limit(to: 2)
         query.getDocuments { (snapshot, err) in
             if let err = err {
                 print(err) 
                 return
             }
+            
+            if snapshot?.count == 0 {
+                ARSLineProgress.hide()
+            }
+            
             snapshot?.documents.forEach({ (documentSnapshot) in
+                ARSLineProgress.hide()
                 let userDictionary = documentSnapshot.data()
                 let user = User(dictionary: userDictionary)
                 self.cardViewModels.append(user.toCardViewModel())
                 self.lastFetchUser = user
+                self.setupCard(fromUser: user)
             })
             self.setupFirestoreUserCards()
         }
@@ -49,10 +60,21 @@ class HomeController: UIViewController {
         
     }
     
+    @objc func handleRefresh() {
+        fetchUsersFromFirestore()
+    }
+    
+    fileprivate func setupCard(fromUser user: User) {
+        let cardView = CardView(frame: .zero)
+        cardView.cardViewModel = user.toCardViewModel()
+        cardDeckView.addSubview(cardView)
+        cardView.fillSuperview()
+    }
+    
     //MARK: - Fileprivate
     fileprivate func setupLayout() {
         view.backgroundColor = .white
-        let overallStackView = UIStackView(arrangedSubviews: [topStackView, cardDeckView, buttonsStackView])
+        let overallStackView = UIStackView(arrangedSubviews: [topStackView, cardDeckView, bottomControls])
         overallStackView.axis = .vertical
         view.addSubview(overallStackView)
         overallStackView.anchor(top: view.safeAreaLayoutGuide.topAnchor, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.trailingAnchor)
@@ -64,10 +86,7 @@ class HomeController: UIViewController {
     // setup the animation of card
     fileprivate func setupFirestoreUserCards() {
         cardViewModels.forEach { (cardViewModel) in
-            let cardView = CardView(frame: .zero)
-            cardView.cardViewModel = cardViewModel
-            cardDeckView.addSubview(cardView)
-            cardView.fillSuperview()
+            
         }
     }
 }

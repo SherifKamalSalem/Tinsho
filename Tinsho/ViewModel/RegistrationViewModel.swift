@@ -34,13 +34,13 @@ class RegistrationViewModel {
     
     func performRegistration(completion: @escaping(Error?) -> ()) {
         guard let email = email, let password = password else { return }
-        self.bindableIsRegistering.value = true
         Auth.auth().createUser(withEmail: email, password: password) { (result, err) in
             if let err = err {
                 print(err)
                 completion(err)
                 return
             }
+            self.bindableIsRegistering.value = true
             self.saveImageToFirebase(completion: completion)
         }
     }
