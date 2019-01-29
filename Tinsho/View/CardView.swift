@@ -7,27 +7,31 @@
 //
 
 import UIKit
+import SDWebImage
 
 class CardView: UIView {
 
     let gradientLayer = CAGradientLayer()
-    var imageIndex = 0
     fileprivate let deselectedColor = UIColor(white: 0, alpha: 0.1)
     
     var cardViewModel: CardViewModel! {
         didSet {
             let imageName = cardViewModel.imageNames.first ?? ""
-            imageView.image = UIImage(named: imageName)
+            if let imageUrl = URL(string: imageName) {
+                imageView.sd_setImage(with: imageUrl)
+            }
+            
             infoLabel.attributedText = cardViewModel.attributedString
             infoLabel.textAlignment = cardViewModel.textAlignment
             
-            (0..<cardViewModel.imageNames.count).map { (_) in
+            (0..<cardViewModel.imageNames.count).forEach { (_) in
                 let barView = UIView()
                 barView.backgroundColor = deselectedColor
                 barView.layer.cornerRadius = 3
                 barsStackView.addArrangedSubview(barView)
             }
             barsStackView.arrangedSubviews.first?.backgroundColor = .white
+            setupImageIndexObserver()
         }
     }
     
@@ -69,17 +73,22 @@ class CardView: UIView {
         let tapLocation = gesture.location(in: nil)
         let shouldAdvanceNextPhoto = tapLocation.x > frame.width / 2 ? true : false
         if shouldAdvanceNextPhoto {
-            imageIndex = min(imageIndex + 1, cardViewModel.imageNames.count - 1)
+            cardViewModel.advanceToNextPhoto()
         } else {
-            imageIndex = max(0, imageIndex - 1)
+            cardViewModel.goToPreviousPhoto()
         }
-        
-        let imageName = cardViewModel.imageNames[imageIndex]
-        imageView.image = UIImage(named: imageName)
-        barsStackView.arrangedSubviews.forEach { (v) in
-            v.backgroundColor = deselectedColor
+    }
+    
+    fileprivate func setupImageIndexObserver() {
+        cardViewModel.imageIndexObserver = { (idx, imageUrl) in
+            if let url = URL(string: imageUrl ?? "") {
+                self.imageView.sd_setImage(with: url)
+            }
+            self.barsStackView.arrangedSubviews.forEach({ (v) in
+                v.backgroundColor = self.deselectedColor
+            })
+            self.barsStackView.arrangedSubviews[idx].backgroundColor = .white
         }
-        barsStackView.arrangedSubviews[imageIndex].backgroundColor = .white
     }
     
     fileprivate func setupLayout() {

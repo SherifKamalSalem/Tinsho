@@ -7,21 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4215A09E21FBB4C800B55006 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4215A09D21FBB4C800B55006 /* GoogleService-Info.plist */; };
 		4228830421F306980053B264 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4228830321F306980053B264 /* AppDelegate.swift */; };
 		4228830621F306980053B264 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4228830521F306980053B264 /* HomeController.swift */; };
 		4228830921F306980053B264 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4228830721F306980053B264 /* Main.storyboard */; };
 		4228830B21F3069A0053B264 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4228830A21F3069A0053B264 /* Assets.xcassets */; };
 		4228830E21F3069A0053B264 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4228830C21F3069A0053B264 /* LaunchScreen.storyboard */; };
 		4228831721F32AF90053B264 /* Extensions+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4228831621F32AF90053B264 /* Extensions+UIView.swift */; };
+		4251BFE421FB47010016853E /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4251BFE321FB47010016853E /* RegistrationViewController.swift */; };
+		4251BFE621FB4FD70016853E /* CustomTxtField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4251BFE521FB4FD70016853E /* CustomTxtField.swift */; };
+		4251BFE821FB92650016853E /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4251BFE721FB92650016853E /* RegistrationViewModel.swift */; };
 		426942C021FA099A00AC5BB9 /* Advertiser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 426942BF21FA099A00AC5BB9 /* Advertiser.swift */; };
+		427C01F721FF765600C79A04 /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 427C01F621FF765600C79A04 /* Bindable.swift */; };
 		42839BC021F9CC1900837803 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42839BBF21F9CC1900837803 /* User.swift */; };
 		42839BC421F9DDF500837803 /* CardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42839BC321F9DDF500837803 /* CardViewModel.swift */; };
 		4284AEA321F8BB96001CC774 /* HomeBottomControlsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4284AEA221F8BB96001CC774 /* HomeBottomControlsStackView.swift */; };
 		4284AEA521F8DCA1001CC774 /* TopNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4284AEA421F8DCA1001CC774 /* TopNavigationStackView.swift */; };
 		4284AEA721F8E588001CC774 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4284AEA621F8E588001CC774 /* CardView.swift */; };
+		7BBFA20A1954B1038BD396FA /* Pods_Tinsho.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD0CC04F0C18ACE4C2AF982C /* Pods_Tinsho.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4215A09D21FBB4C800B55006 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4228830021F306980053B264 /* Tinsho.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tinsho.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4228830321F306980053B264 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4228830521F306980053B264 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
@@ -30,12 +37,19 @@
 		4228830D21F3069A0053B264 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4228830F21F3069A0053B264 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4228831621F32AF90053B264 /* Extensions+UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extensions+UIView.swift"; sourceTree = "<group>"; };
+		4251BFE321FB47010016853E /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		4251BFE521FB4FD70016853E /* CustomTxtField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTxtField.swift; sourceTree = "<group>"; };
+		4251BFE721FB92650016853E /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
 		426942BF21FA099A00AC5BB9 /* Advertiser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Advertiser.swift; sourceTree = "<group>"; };
+		427C01F621FF765600C79A04 /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
 		42839BBF21F9CC1900837803 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		42839BC321F9DDF500837803 /* CardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewModel.swift; sourceTree = "<group>"; };
 		4284AEA221F8BB96001CC774 /* HomeBottomControlsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBottomControlsStackView.swift; sourceTree = "<group>"; };
 		4284AEA421F8DCA1001CC774 /* TopNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNavigationStackView.swift; sourceTree = "<group>"; };
 		4284AEA621F8E588001CC774 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		D4712468CF3BBED542718783 /* Pods-Tinsho.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tinsho.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tinsho/Pods-Tinsho.debug.xcconfig"; sourceTree = "<group>"; };
+		DD0CC04F0C18ACE4C2AF982C /* Pods_Tinsho.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tinsho.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5B341D8C051A653489BC9FE /* Pods-Tinsho.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tinsho.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tinsho/Pods-Tinsho.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BBFA20A1954B1038BD396FA /* Pods_Tinsho.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -54,6 +69,8 @@
 			children = (
 				4228830221F306980053B264 /* Tinsho */,
 				4228830121F306980053B264 /* Products */,
+				550D1FE4A0246952E7A2B510 /* Pods */,
+				8698EAA3D9F17ED21F1C7791 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -78,6 +95,7 @@
 				4228830A21F3069A0053B264 /* Assets.xcassets */,
 				4228830C21F3069A0053B264 /* LaunchScreen.storyboard */,
 				4228830F21F3069A0053B264 /* Info.plist */,
+				4215A09D21FBB4C800B55006 /* GoogleService-Info.plist */,
 			);
 			path = Tinsho;
 			sourceTree = "<group>";
@@ -103,6 +121,8 @@
 			isa = PBXGroup;
 			children = (
 				4228830521F306980053B264 /* HomeController.swift */,
+				4251BFE321FB47010016853E /* RegistrationViewController.swift */,
+				427C01F621FF765600C79A04 /* Bindable.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -111,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				42839BC321F9DDF500837803 /* CardViewModel.swift */,
+				4251BFE721FB92650016853E /* RegistrationViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -121,8 +142,26 @@
 				4284AEA221F8BB96001CC774 /* HomeBottomControlsStackView.swift */,
 				4284AEA421F8DCA1001CC774 /* TopNavigationStackView.swift */,
 				4284AEA621F8E588001CC774 /* CardView.swift */,
+				4251BFE521FB4FD70016853E /* CustomTxtField.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		550D1FE4A0246952E7A2B510 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D4712468CF3BBED542718783 /* Pods-Tinsho.debug.xcconfig */,
+				E5B341D8C051A653489BC9FE /* Pods-Tinsho.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		8698EAA3D9F17ED21F1C7791 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DD0CC04F0C18ACE4C2AF982C /* Pods_Tinsho.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -132,9 +171,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4228831221F3069A0053B264 /* Build configuration list for PBXNativeTarget "Tinsho" */;
 			buildPhases = (
+				986929A7F8DDCE016327608D /* [CP] Check Pods Manifest.lock */,
 				422882FC21F306980053B264 /* Sources */,
 				422882FD21F306980053B264 /* Frameworks */,
 				422882FE21F306980053B264 /* Resources */,
+				03C4AB1B67FD89F6C9DA095D /* [CP] Embed Pods Frameworks */,
+				4230F74E0D5B0725122DEEAE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -184,6 +226,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4228830E21F3069A0053B264 /* LaunchScreen.storyboard in Resources */,
+				4215A09E21FBB4C800B55006 /* GoogleService-Info.plist in Resources */,
 				4228830B21F3069A0053B264 /* Assets.xcassets in Resources */,
 				4228830921F306980053B264 /* Main.storyboard in Resources */,
 			);
@@ -191,15 +234,108 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		03C4AB1B67FD89F6C9DA095D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Tinsho/Pods-Tinsho-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ARSLineProgress/ARSLineProgress.framework",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/JGProgressHUD/JGProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ARSLineProgress.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JGProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tinsho/Pods-Tinsho-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4230F74E0D5B0725122DEEAE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Tinsho/Pods-Tinsho-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseFirestore/gRPCCertificates-Firestore.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/gRPCCertificates-Firestore.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Tinsho/Pods-Tinsho-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		986929A7F8DDCE016327608D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Tinsho-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		422882FC21F306980053B264 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				427C01F721FF765600C79A04 /* Bindable.swift in Sources */,
 				4228830621F306980053B264 /* HomeController.swift in Sources */,
+				4251BFE821FB92650016853E /* RegistrationViewModel.swift in Sources */,
+				4251BFE621FB4FD70016853E /* CustomTxtField.swift in Sources */,
 				4284AEA321F8BB96001CC774 /* HomeBottomControlsStackView.swift in Sources */,
 				426942C021FA099A00AC5BB9 /* Advertiser.swift in Sources */,
 				4228830421F306980053B264 /* AppDelegate.swift in Sources */,
+				4251BFE421FB47010016853E /* RegistrationViewController.swift in Sources */,
 				4228831721F32AF90053B264 /* Extensions+UIView.swift in Sources */,
 				42839BC421F9DDF500837803 /* CardViewModel.swift in Sources */,
 				4284AEA721F8E588001CC774 /* CardView.swift in Sources */,
@@ -348,6 +484,7 @@
 		};
 		4228831321F3069A0053B264 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D4712468CF3BBED542718783 /* Pods-Tinsho.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -366,6 +503,7 @@
 		};
 		4228831421F3069A0053B264 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E5B341D8C051A653489BC9FE /* Pods-Tinsho.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
