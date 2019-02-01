@@ -191,6 +191,10 @@ class SettingsController: UITableViewController {
         let ageRangeCell = tableView.cellForRow(at: indexPath) as? AgeRangeCell
         ageRangeCell?.minLbl.text = "Min \(Int(slider.value))"
         user?.minSeekingAge = Int(slider.value)
+        if let value = ageRangeCell?.maxSlider.value, slider.value > value {
+            ageRangeCell?.maxSlider.value = slider.value
+            ageRangeCell?.maxLbl.text = "Max \(Int(slider.value))"
+        }
     }
     
     @objc fileprivate func handleMaxAgeChanged(slider: UISlider) {
@@ -198,6 +202,10 @@ class SettingsController: UITableViewController {
         let ageRangeCell = tableView.cellForRow(at: indexPath) as? AgeRangeCell
         ageRangeCell?.maxLbl.text = "Max \(Int(slider.value))"
         user?.maxSeekingAge = Int(slider.value)
+        if let value = ageRangeCell?.minSlider.value, value > slider.value {
+            ageRangeCell?.minSlider.value = slider.value
+            ageRangeCell?.minLbl.text = "Min \(Int(slider.value))"
+        }
     }
     
     @objc fileprivate func handleNameChange(textField: UITextField) {
@@ -290,7 +298,6 @@ extension SettingsController : UIImagePickerControllerDelegate, UINavigationCont
                 } else {
                     self.user?.imageUrl3 = url?.absoluteString
                 }
-                print("url \(self.user?.imageUrl2)")
             })
         }
     }

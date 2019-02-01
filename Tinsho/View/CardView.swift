@@ -41,6 +41,12 @@ class CardView: UIView {
     //configration
     fileprivate let threshold: CGFloat = 80
     
+    let moreInfoButton: UIButton = {
+        let button = UIButton()
+        button.setImage(#imageLiteral(resourceName: "info_icon").withRenderingMode(.alwaysOriginal), for: .normal)
+        return button
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupLayout()
@@ -99,7 +105,8 @@ class CardView: UIView {
         //Add gradient layer
         setupGradientLayer()
         addSubview(infoLabel)
-        
+        addSubview(moreInfoButton)
+        moreInfoButton.anchor(top: nil, leading: nil, bottom: bottomAnchor, trailing: trailingAnchor, padding: .init(top: 0, left: 0, bottom: 16, right: 16), size: .init(width: 44, height: 44))
         infoLabel.anchor(top: nil, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor, padding: .init(top: 0, left: 16, bottom: 16, right: 16))
         infoLabel.textColor = .white
         infoLabel.font = UIFont.systemFont(ofSize: 32, weight: .heavy)

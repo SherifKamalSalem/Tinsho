@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import ARSLineProgress
 
-class HomeController: UIViewController, SettingsControllerDelegate {
+class HomeController: UIViewController, SettingsControllerDelegate, RegisterAndLoginDelegate {
 
     var user: User?
     var cardViewModels = [CardViewModel]()
@@ -25,18 +25,21 @@ class HomeController: UIViewController, SettingsControllerDelegate {
         topStackView.settingButton.addTarget(self, action: #selector(handleSettingBtnPressed), for: .touchUpInside)
         bottomControls.refreshBtn.addTarget(self, action: #selector(handleRefresh), for: .touchUpInside)
         setupLayout()
-//        setupFirestoreUserCards()
-//        fetchUsersFromFirestore()
         fetchCurrentUserData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if Auth.auth().currentUser?.uid == nil {
-            let registrationController = RegistrationViewController()
-            let navController = UINavigationController(rootViewController: registrationController)
+            let loginController = LoginController()
+            loginController.delegate = self
+            let navController = UINavigationController(rootViewController: loginController)
             present(navController, animated: true, completion: nil)
         }
+    }
+    
+    func userLoggedIn() {
+        fetchCurrentUserData()
     }
     
     fileprivate func fetchCurrentUserData() {
@@ -49,6 +52,7 @@ class HomeController: UIViewController, SettingsControllerDelegate {
             guard let dictionary = snapshot?.data() else { return }
             self.user = User(dictionary: dictionary)
             self.fetchUsersFromFirestore()
+            ARSLineProgress.hide()
         }
     }
     
@@ -57,6 +61,7 @@ class HomeController: UIViewController, SettingsControllerDelegate {
         ARSLineProgress.show()
         let query = Firestore.firestore().collection("users").whereField("age", isGreaterThanOrEqualTo: minAge).whereField("age", isLessThanOrEqualTo: maxAge)
         query.getDocuments { (snapshot, err) in
+            ARSLineProgress.hide()
             if let err = err {
                 print(err) 
                 return
@@ -75,7 +80,6 @@ class HomeController: UIViewController, SettingsControllerDelegate {
                 self.lastFetchUser = user
                 self.setupCard(fromUser: user)
             })
-            self.setupFirestoreUserCards()
         }
     }
     
@@ -113,10 +117,13 @@ class HomeController: UIViewController, SettingsControllerDelegate {
         overallStackView.bringSubviewToFront(cardDeckView)
     }
     
-    // setup the animation of card
-    fileprivate func setupFirestoreUserCards() {
-        cardViewModels.forEach { (cardViewModel) in
-            
-        }
-    }
+//    // setup the animation of card
+//    fileprivate func setupFirestoreUserCards() {
+//        cardViewModels.forEach { (cardViewModel) in
+//            let cardView = CardView(frame: .zero)
+//            cardView.cardViewModel = cardViewModel
+//            cardDeckView.addSubview(cardView)
+//            cardDeckView.fillSuperview()
+//        }
+//    }
 }

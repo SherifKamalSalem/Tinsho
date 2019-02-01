@@ -15,7 +15,7 @@ class CustomTxtField : UITextField {
     init(padding: CGFloat) {
         self.padding = padding
         super.init(frame: .zero)
-        self.layer.cornerRadius = 25
+        self.layer.cornerRadius = 22
     }
     
     override func textRect(forBounds bounds: CGRect) -> CGRect {
