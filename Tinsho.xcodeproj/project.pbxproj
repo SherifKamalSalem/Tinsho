@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		420B9C7F220444D2004F9020 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420B9C7C220444D0004F9020 /* LoginController.swift */; };
+		420B9C80220444D2004F9020 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420B9C7D220444D1004F9020 /* LoginViewModel.swift */; };
 		4215A09E21FBB4C800B55006 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4215A09D21FBB4C800B55006 /* GoogleService-Info.plist */; };
+		422787A62202B8670001B016 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 422787A52202B8670001B016 /* SettingsCell.swift */; };
 		4228830421F306980053B264 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4228830321F306980053B264 /* AppDelegate.swift */; };
 		4228830621F306980053B264 /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4228830521F306980053B264 /* HomeController.swift */; };
 		4228830921F306980053B264 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4228830721F306980053B264 /* Main.storyboard */; };
@@ -24,11 +27,16 @@
 		4284AEA321F8BB96001CC774 /* HomeBottomControlsStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4284AEA221F8BB96001CC774 /* HomeBottomControlsStackView.swift */; };
 		4284AEA521F8DCA1001CC774 /* TopNavigationStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4284AEA421F8DCA1001CC774 /* TopNavigationStackView.swift */; };
 		4284AEA721F8E588001CC774 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4284AEA621F8E588001CC774 /* CardView.swift */; };
+		42AAAAA622041B9F008E3F68 /* AgeRangeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AAAAA522041B9F008E3F68 /* AgeRangeCell.swift */; };
+		42E558192201130C006ADC28 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E558182201130C006ADC28 /* SettingsController.swift */; };
 		7BBFA20A1954B1038BD396FA /* Pods_Tinsho.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD0CC04F0C18ACE4C2AF982C /* Pods_Tinsho.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		420B9C7C220444D0004F9020 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		420B9C7D220444D1004F9020 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		4215A09D21FBB4C800B55006 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		422787A52202B8670001B016 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		4228830021F306980053B264 /* Tinsho.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tinsho.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4228830321F306980053B264 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4228830521F306980053B264 /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
@@ -47,6 +55,8 @@
 		4284AEA221F8BB96001CC774 /* HomeBottomControlsStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeBottomControlsStackView.swift; sourceTree = "<group>"; };
 		4284AEA421F8DCA1001CC774 /* TopNavigationStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNavigationStackView.swift; sourceTree = "<group>"; };
 		4284AEA621F8E588001CC774 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		42AAAAA522041B9F008E3F68 /* AgeRangeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeRangeCell.swift; sourceTree = "<group>"; };
+		42E558182201130C006ADC28 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
 		D4712468CF3BBED542718783 /* Pods-Tinsho.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tinsho.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tinsho/Pods-Tinsho.debug.xcconfig"; sourceTree = "<group>"; };
 		DD0CC04F0C18ACE4C2AF982C /* Pods_Tinsho.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tinsho.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5B341D8C051A653489BC9FE /* Pods-Tinsho.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tinsho.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tinsho/Pods-Tinsho.release.xcconfig"; sourceTree = "<group>"; };
@@ -64,6 +74,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		420B9C7522044334004F9020 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				420B9C7C220444D0004F9020 /* LoginController.swift */,
+				420B9C7D220444D1004F9020 /* LoginViewModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
 		422882F721F306980053B264 = {
 			isa = PBXGroup;
 			children = (
@@ -120,9 +139,11 @@
 		42839BC121F9DD2700837803 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				420B9C7522044334004F9020 /* Login */,
 				4228830521F306980053B264 /* HomeController.swift */,
 				4251BFE321FB47010016853E /* RegistrationViewController.swift */,
 				427C01F621FF765600C79A04 /* Bindable.swift */,
+				42E558182201130C006ADC28 /* SettingsController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -143,6 +164,8 @@
 				4284AEA421F8DCA1001CC774 /* TopNavigationStackView.swift */,
 				4284AEA621F8E588001CC774 /* CardView.swift */,
 				4251BFE521FB4FD70016853E /* CustomTxtField.swift */,
+				422787A52202B8670001B016 /* SettingsCell.swift */,
+				42AAAAA522041B9F008E3F68 /* AgeRangeCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -335,12 +358,17 @@
 				4284AEA321F8BB96001CC774 /* HomeBottomControlsStackView.swift in Sources */,
 				426942C021FA099A00AC5BB9 /* Advertiser.swift in Sources */,
 				4228830421F306980053B264 /* AppDelegate.swift in Sources */,
+				42AAAAA622041B9F008E3F68 /* AgeRangeCell.swift in Sources */,
+				420B9C80220444D2004F9020 /* LoginViewModel.swift in Sources */,
 				4251BFE421FB47010016853E /* RegistrationViewController.swift in Sources */,
 				4228831721F32AF90053B264 /* Extensions+UIView.swift in Sources */,
 				42839BC421F9DDF500837803 /* CardViewModel.swift in Sources */,
+				420B9C7F220444D2004F9020 /* LoginController.swift in Sources */,
+				42E558192201130C006ADC28 /* SettingsController.swift in Sources */,
 				4284AEA721F8E588001CC774 /* CardView.swift in Sources */,
 				4284AEA521F8DCA1001CC774 /* TopNavigationStackView.swift in Sources */,
 				42839BC021F9CC1900837803 /* User.swift in Sources */,
+				422787A62202B8670001B016 /* SettingsCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -488,13 +516,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S242M8F4J2;
+				DEVELOPMENT_TEAM = ETH2M29NBU;
 				INFOPLIST_FILE = Tinsho/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.sherif.Tinsho;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sherif.xpress.Tinsho;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -507,13 +535,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S242M8F4J2;
+				DEVELOPMENT_TEAM = ETH2M29NBU;
 				INFOPLIST_FILE = Tinsho/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.sherif.Tinsho;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sherif.xpress.Tinsho;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

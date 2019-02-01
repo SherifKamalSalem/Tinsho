@@ -42,6 +42,7 @@ class RegistrationViewModel {
             }
             self.bindableIsRegistering.value = true
             self.saveImageToFirebase(completion: completion)
+            
         }
     }
     

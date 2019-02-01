@@ -82,6 +82,16 @@ class RegistrationViewController: UIViewController {
         return button
     }()
     
+    let goToLoginBtn: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Go to Login", for: .normal)
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .heavy)
+        button.addTarget(self, action: #selector(handleGoToLoginBtnPressed), for: .touchUpInside)
+        
+        return button
+    }()
+    
     let gradientLayer = CAGradientLayer()
     let registrationViewModel = RegistrationViewModel()
     
@@ -141,7 +151,13 @@ class RegistrationViewController: UIViewController {
                 self.showHUDWithError(error: err)
                 return
             }
+            self.present(HomeController(), animated: true)
         }
+    }
+    
+    @objc fileprivate func handleGoToLoginBtnPressed() {
+        let loginController = LoginController()
+        navigationController?.pushViewController(loginController, animated: true)
     }
     
     fileprivate func showHUDWithError(error: Error) {
@@ -226,6 +242,7 @@ class RegistrationViewController: UIViewController {
         ])
     
     fileprivate func setupLayout() {
+        navigationController?.isNavigationBarHidden = true
         selectPhotoBtn.widthAnchor.constraint(equalToConstant: 275).isActive = true
         setupGradientLayer()
         overallStackView.axis = .vertical
@@ -233,6 +250,8 @@ class RegistrationViewController: UIViewController {
         view.addSubview(overallStackView)
         overallStackView.anchor(top: nil, leading: view.leadingAnchor, bottom: nil, trailing: view.trailingAnchor, padding: .init(top: 0, left: 50, bottom: 0, right: 50))
         overallStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        view.addSubview(goToLoginBtn)
+        goToLoginBtn.anchor(top: nil, leading: view.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, trailing: view.trailingAnchor)
     }
     
     override func viewDidDisappear(_ animated: Bool) {

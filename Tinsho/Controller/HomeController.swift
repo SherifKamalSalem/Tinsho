@@ -10,8 +10,9 @@ import UIKit
 import Firebase
 import ARSLineProgress
 
-class HomeController: UIViewController {
+class HomeController: UIViewController, SettingsControllerDelegate {
 
+    var user: User?
     var cardViewModels = [CardViewModel]()
     
     let topStackView = TopNavigationStackView()
@@ -22,16 +23,39 @@ class HomeController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         topStackView.settingButton.addTarget(self, action: #selector(handleSettingBtnPressed), for: .touchUpInside)
-        setupLayout()
-        setupFirestoreUserCards()
-        fetchUsersFromFirestore()
-        
         bottomControls.refreshBtn.addTarget(self, action: #selector(handleRefresh), for: .touchUpInside)
+        setupLayout()
+//        setupFirestoreUserCards()
+//        fetchUsersFromFirestore()
+        fetchCurrentUserData()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if Auth.auth().currentUser?.uid == nil {
+            let registrationController = RegistrationViewController()
+            let navController = UINavigationController(rootViewController: registrationController)
+            present(navController, animated: true, completion: nil)
+        }
+    }
+    
+    fileprivate func fetchCurrentUserData() {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        Firestore.firestore().collection("users").document(uid).getDocument { (snapshot, err) in
+            if let err = err {
+                print(err)
+                return
+            }
+            guard let dictionary = snapshot?.data() else { return }
+            self.user = User(dictionary: dictionary)
+            self.fetchUsersFromFirestore()
+        }
     }
     
     fileprivate func fetchUsersFromFirestore() {
+        guard let minAge = user?.minSeekingAge, let maxAge = user?.maxSeekingAge else { return }
         ARSLineProgress.show()
-        let query = Firestore.firestore().collection("users").order(by: "uid").start(after: [lastFetchUser?.uid ?? ""]).limit(to: 2)
+        let query = Firestore.firestore().collection("users").whereField("age", isGreaterThanOrEqualTo: minAge).whereField("age", isLessThanOrEqualTo: maxAge)
         query.getDocuments { (snapshot, err) in
             if let err = err {
                 print(err) 
@@ -46,6 +70,7 @@ class HomeController: UIViewController {
                 ARSLineProgress.hide()
                 let userDictionary = documentSnapshot.data()
                 let user = User(dictionary: userDictionary)
+                
                 self.cardViewModels.append(user.toCardViewModel())
                 self.lastFetchUser = user
                 self.setupCard(fromUser: user)
@@ -55,9 +80,14 @@ class HomeController: UIViewController {
     }
     
     @objc func handleSettingBtnPressed() {
-        let registrationViewController = RegistrationViewController()
-        present(registrationViewController, animated: true, completion: nil)
-        
+        let settingsController = SettingsController()
+        settingsController.delegate = self
+        let navController = UINavigationController(rootViewController: settingsController)
+        present(navController, animated: true, completion: nil)
+    }
+    
+    func didSaveSettings() {
+        fetchCurrentUserData()
     }
     
     @objc func handleRefresh() {
