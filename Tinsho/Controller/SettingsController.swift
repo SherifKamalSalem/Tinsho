@@ -28,6 +28,9 @@ class SettingsController: UITableViewController {
     
     var user: User?
     var delegate: SettingsControllerDelegate?
+    static let minSeekingAge = 18
+    static let maxSeekingAge = 50
+    
     
     lazy var header: UIView = {
         let header = UIView()
@@ -126,10 +129,13 @@ class SettingsController: UITableViewController {
             let ageRangeCell = AgeRangeCell(style: .default, reuseIdentifier: nil)
             ageRangeCell.minSlider.addTarget(self, action: #selector(handleMinAgeChanged), for: .valueChanged)
             ageRangeCell.maxSlider.addTarget(self, action: #selector(handleMaxAgeChanged), for: .valueChanged)
-            ageRangeCell.minSlider.value = Float(user?.minSeekingAge ?? 18)
-            ageRangeCell.maxSlider.value = Float(user?.maxSeekingAge ?? 18)
-            ageRangeCell.minLbl.text = "Min \(user?.minSeekingAge ?? -1)"
-            ageRangeCell.maxLbl.text = "Max \(user?.maxSeekingAge ?? -1)"
+            let minAge = user?.minSeekingAge ?? 18
+            let maxAge = user?.maxSeekingAge ?? 50
+            
+            ageRangeCell.minSlider.value = Float(minAge)
+            ageRangeCell.maxSlider.value = Float(maxAge)
+            ageRangeCell.minLbl.text = "Min \(minAge)"
+            ageRangeCell.maxLbl.text = "Max \(maxAge)"
             return ageRangeCell
         }
         let cell = SettingsCell(style: .default, reuseIdentifier: nil)
@@ -241,8 +247,8 @@ class SettingsController: UITableViewController {
             "imageUrl3" : user?.imageUrl3 ?? "",
             "age" : user?.age ?? 60,
             "profession" : user?.profession ?? "Bank Robber",
-            "minSeekingAge" : user?.minSeekingAge ?? -1,
-            "maxSeekingAge" : user?.maxSeekingAge ?? -1
+            "minSeekingAge" : user?.minSeekingAge ?? 18,
+            "maxSeekingAge" : user?.maxSeekingAge ?? 50
         ]
         ARSLineProgress.show()
         Firestore.firestore().collection("users").document(uid).setData(docData) { (err) in

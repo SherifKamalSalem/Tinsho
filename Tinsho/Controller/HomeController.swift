@@ -10,7 +10,7 @@ import UIKit
 import Firebase
 import ARSLineProgress
 
-class HomeController: UIViewController, SettingsControllerDelegate, RegisterAndLoginDelegate {
+class HomeController: UIViewController, SettingsControllerDelegate, RegisterAndLoginDelegate, CardViewDelegate {
 
     var user: User?
     var cardViewModels = [CardViewModel]()
@@ -57,7 +57,10 @@ class HomeController: UIViewController, SettingsControllerDelegate, RegisterAndL
     }
     
     fileprivate func fetchUsersFromFirestore() {
-        guard let minAge = user?.minSeekingAge, let maxAge = user?.maxSeekingAge else { return }
+        
+        let minAge = user?.minSeekingAge ?? 18
+        let maxAge = user?.maxSeekingAge ?? 50
+        
         ARSLineProgress.show()
         let query = Firestore.firestore().collection("users").whereField("age", isGreaterThanOrEqualTo: minAge).whereField("age", isLessThanOrEqualTo: maxAge)
         query.getDocuments { (snapshot, err) in
@@ -75,10 +78,9 @@ class HomeController: UIViewController, SettingsControllerDelegate, RegisterAndL
                 ARSLineProgress.hide()
                 let userDictionary = documentSnapshot.data()
                 let user = User(dictionary: userDictionary)
-                
-                self.cardViewModels.append(user.toCardViewModel())
-                self.lastFetchUser = user
-                self.setupCard(fromUser: user)
+                if user.uid != Auth.auth().currentUser?.uid {
+                    self.setupCard(fromUser: user)
+                }
             })
         }
     }
@@ -100,9 +102,16 @@ class HomeController: UIViewController, SettingsControllerDelegate, RegisterAndL
     
     fileprivate func setupCard(fromUser user: User) {
         let cardView = CardView(frame: .zero)
+        cardView.delegate = self
         cardView.cardViewModel = user.toCardViewModel()
         cardDeckView.addSubview(cardView)
         cardView.fillSuperview()
+    }
+    
+    func didTapMoreInfo(cardViewModel: CardViewModel) {
+        let userDetailsController = UserDetailsController()
+        userDetailsController.cardViewModel = cardViewModel
+        present(userDetailsController, animated: true)
     }
     
     //MARK: - Fileprivate
@@ -116,14 +125,4 @@ class HomeController: UIViewController, SettingsControllerDelegate, RegisterAndL
         overallStackView.layoutMargins = .init(top: 0, left: 12, bottom: 0, right: 12)
         overallStackView.bringSubviewToFront(cardDeckView)
     }
-    
-//    // setup the animation of card
-//    fileprivate func setupFirestoreUserCards() {
-//        cardViewModels.forEach { (cardViewModel) in
-//            let cardView = CardView(frame: .zero)
-//            cardView.cardViewModel = cardViewModel
-//            cardDeckView.addSubview(cardView)
-//            cardDeckView.fillSuperview()
-//        }
-//    }
 }

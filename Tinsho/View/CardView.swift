@@ -9,22 +9,27 @@
 import UIKit
 import SDWebImage
 
+protocol CardViewDelegate {
+    func didTapMoreInfo(cardViewModel: CardViewModel)
+}
+
 class CardView: UIView {
 
     let gradientLayer = CAGradientLayer()
     fileprivate let deselectedColor = UIColor(white: 0, alpha: 0.1)
+    var delegate: CardViewDelegate?
     
     var cardViewModel: CardViewModel! {
         didSet {
-            let imageName = cardViewModel.imageNames.first ?? ""
+            let imageName = cardViewModel.imageUrls.first ?? ""
             if let imageUrl = URL(string: imageName) {
-                imageView.sd_setImage(with: imageUrl)
+                imageView.sd_setImage(with: imageUrl, placeholderImage: #imageLiteral(resourceName: "appIcon"), options: .continueInBackground)
             }
             
             infoLabel.attributedText = cardViewModel.attributedString
             infoLabel.textAlignment = cardViewModel.textAlignment
             
-            (0..<cardViewModel.imageNames.count).forEach { (_) in
+            (0..<cardViewModel.imageUrls.count).forEach { (_) in
                 let barView = UIView()
                 barView.backgroundColor = deselectedColor
                 barView.layer.cornerRadius = 3
@@ -44,6 +49,7 @@ class CardView: UIView {
     let moreInfoButton: UIButton = {
         let button = UIButton()
         button.setImage(#imageLiteral(resourceName: "info_icon").withRenderingMode(.alwaysOriginal), for: .normal)
+        button.addTarget(self, action: #selector(handleMoreInfo), for: .touchUpInside)
         return button
     }()
     
@@ -57,6 +63,10 @@ class CardView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc fileprivate func handleMoreInfo() {
+        delegate?.didTapMoreInfo(cardViewModel: cardViewModel)
     }
     
     @objc fileprivate func handlePan(gesture: UIPanGestureRecognizer) {
@@ -88,7 +98,7 @@ class CardView: UIView {
     fileprivate func setupImageIndexObserver() {
         cardViewModel.imageIndexObserver = { (idx, imageUrl) in
             if let url = URL(string: imageUrl ?? "") {
-                self.imageView.sd_setImage(with: url)
+                self.imageView.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "appIcon"), options: .continueInBackground)
             }
             self.barsStackView.arrangedSubviews.forEach({ (v) in
                 v.backgroundColor = self.deselectedColor
