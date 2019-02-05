@@ -47,7 +47,7 @@ class UserDetailsController: UIViewController, UIScrollViewDelegate {
     lazy var likeButton = self.createButton(image: #imageLiteral(resourceName: "like_circle"), selector: #selector(handleDislikeTapped))
     lazy var superlikeButton = self.createButton(image: #imageLiteral(resourceName: "super_like_circle"), selector: #selector(handleDislikeTapped))
     
-    let swipingPhotoController = SwipingPhotosController(transitionStyle: .scroll, navigationOrientation: .horizontal)
+    let swipingPhotoController = SwipingPhotosController()
     
     override func viewDidLoad() {
         super.viewDidLoad()

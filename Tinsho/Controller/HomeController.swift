@@ -19,11 +19,13 @@ class HomeController: UIViewController, SettingsControllerDelegate, RegisterAndL
     let bottomControls = HomeBottomControlsStackView()
     let cardDeckView = UIView()
     var lastFetchUser: User?
+    var topCardView: CardView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         topStackView.settingButton.addTarget(self, action: #selector(handleSettingBtnPressed), for: .touchUpInside)
         bottomControls.refreshBtn.addTarget(self, action: #selector(handleRefresh), for: .touchUpInside)
+        bottomControls.likeBtn.addTarget(self, action: #selector(handleLike), for: .touchUpInside)
         setupLayout()
         fetchCurrentUserData()
     }
@@ -79,7 +81,10 @@ class HomeController: UIViewController, SettingsControllerDelegate, RegisterAndL
                 let userDictionary = documentSnapshot.data()
                 let user = User(dictionary: userDictionary)
                 if user.uid != Auth.auth().currentUser?.uid {
-                    self.setupCard(fromUser: user)
+                    let cardView = self.setupCard(fromUser: user)
+                    if self.topCardView == nil {
+                        self.topCardView = cardView
+                    }
                 }
             })
         }
@@ -100,12 +105,19 @@ class HomeController: UIViewController, SettingsControllerDelegate, RegisterAndL
         fetchUsersFromFirestore()
     }
     
-    fileprivate func setupCard(fromUser user: User) {
+    @objc func handleLike() {
+        if topCardView != nil {
+            topCardView?.removeFromSuperview()
+        }
+    }
+    
+    fileprivate func setupCard(fromUser user: User) -> CardView {
         let cardView = CardView(frame: .zero)
         cardView.delegate = self
         cardView.cardViewModel = user.toCardViewModel()
         cardDeckView.addSubview(cardView)
         cardView.fillSuperview()
+        return cardView
     }
     
     func didTapMoreInfo(cardViewModel: CardViewModel) {

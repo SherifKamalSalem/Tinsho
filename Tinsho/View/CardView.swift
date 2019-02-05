@@ -15,6 +15,8 @@ protocol CardViewDelegate {
 
 class CardView: UIView {
 
+    var nextCardView: CardView?
+    
     let gradientLayer = CAGradientLayer()
     fileprivate let deselectedColor = UIColor(white: 0, alpha: 0.1)
     var delegate: CardViewDelegate?
@@ -22,10 +24,7 @@ class CardView: UIView {
     var cardViewModel: CardViewModel! {
         didSet {
             let imageName = cardViewModel.imageUrls.first ?? ""
-            if let imageUrl = URL(string: imageName) {
-                imageView.sd_setImage(with: imageUrl, placeholderImage: #imageLiteral(resourceName: "appIcon"), options: .continueInBackground)
-            }
-            
+            swipingPhotosController.cardViewModel = self.cardViewModel
             infoLabel.attributedText = cardViewModel.attributedString
             infoLabel.textAlignment = cardViewModel.textAlignment
             
@@ -40,7 +39,7 @@ class CardView: UIView {
         }
     }
     
-    fileprivate let imageView = UIImageView(image: #imageLiteral(resourceName: "kelly3"))
+    fileprivate var swipingPhotosController = SwipingPhotosController(isCardViewMode: true)
     fileprivate let infoLabel = UILabel()
     fileprivate let barsStackView = UIStackView()
     //configration
@@ -97,9 +96,7 @@ class CardView: UIView {
     
     fileprivate func setupImageIndexObserver() {
         cardViewModel.imageIndexObserver = { (idx, imageUrl) in
-            if let url = URL(string: imageUrl ?? "") {
-                self.imageView.sd_setImage(with: url, placeholderImage: #imageLiteral(resourceName: "appIcon"), options: .continueInBackground)
-            }
+            
             self.barsStackView.arrangedSubviews.forEach({ (v) in
                 v.backgroundColor = self.deselectedColor
             })
@@ -110,8 +107,8 @@ class CardView: UIView {
     fileprivate func setupLayout() {
         layer.cornerRadius = 10
         clipsToBounds = true
-        imageView.contentMode = .scaleAspectFill
-        addSubview(imageView)
+        let swipingPhotosView = swipingPhotosController.view!
+        addSubview(swipingPhotosView)
         //Add gradient layer
         setupGradientLayer()
         addSubview(infoLabel)
@@ -122,8 +119,7 @@ class CardView: UIView {
         infoLabel.font = UIFont.systemFont(ofSize: 32, weight: .heavy)
         infoLabel.numberOfLines = 0
         
-        imageView.fillSuperview()
-        setupBarsStackView()
+        swipingPhotosView.fillSuperview()
     }
     
     fileprivate func setupBarsStackView() {
