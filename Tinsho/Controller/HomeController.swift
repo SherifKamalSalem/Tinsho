@@ -20,12 +20,14 @@ class HomeController: UIViewController, SettingsControllerDelegate, RegisterAndL
     let cardDeckView = UIView()
     var lastFetchUser: User?
     var topCardView: CardView?
+    var prevCardView: CardView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         topStackView.settingButton.addTarget(self, action: #selector(handleSettingBtnPressed), for: .touchUpInside)
         bottomControls.refreshBtn.addTarget(self, action: #selector(handleRefresh), for: .touchUpInside)
         bottomControls.likeBtn.addTarget(self, action: #selector(handleLike), for: .touchUpInside)
+        bottomControls.dislikeBtn.addTarget(self, action: #selector(handleDislike), for: .touchUpInside)
         setupLayout()
         fetchCurrentUserData()
     }
@@ -65,6 +67,7 @@ class HomeController: UIViewController, SettingsControllerDelegate, RegisterAndL
         
         ARSLineProgress.show()
         let query = Firestore.firestore().collection("users").whereField("age", isGreaterThanOrEqualTo: minAge).whereField("age", isLessThanOrEqualTo: maxAge)
+        self.topCardView = nil
         query.getDocuments { (snapshot, err) in
             ARSLineProgress.hide()
             if let err = err {
@@ -82,6 +85,8 @@ class HomeController: UIViewController, SettingsControllerDelegate, RegisterAndL
                 let user = User(dictionary: userDictionary)
                 if user.uid != Auth.auth().currentUser?.uid {
                     let cardView = self.setupCard(fromUser: user)
+                    self.prevCardView?.nextCardView = cardView
+                    self.prevCardView = cardView
                     if self.topCardView == nil {
                         self.topCardView = cardView
                     }
@@ -106,9 +111,40 @@ class HomeController: UIViewController, SettingsControllerDelegate, RegisterAndL
     }
     
     @objc func handleLike() {
-        if topCardView != nil {
-            topCardView?.removeFromSuperview()
+        performSwipeAnimation(translation: 700, angle: 15)
+    }
+    
+    @objc func handleDislike() {
+        performSwipeAnimation(translation: -700, angle: -15)
+    }
+    
+    fileprivate func performSwipeAnimation(translation: CGFloat, angle: CGFloat) {
+        let duration = 0.5
+        let translationAnimation = CABasicAnimation(keyPath: "position.x")
+        translationAnimation.toValue = translation
+        translationAnimation.duration = duration
+        translationAnimation.fillMode = .forwards
+        translationAnimation.isRemovedOnCompletion = false
+        translationAnimation.timingFunction = CAMediaTimingFunction(name: .easeOut)
+        
+        let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
+        rotationAnimation.toValue = angle * CGFloat.pi / 180
+        rotationAnimation.duration = duration
+        
+        let cardView = topCardView
+        topCardView = cardView?.nextCardView
+        
+        CATransaction.setCompletionBlock {
+            cardView?.removeFromSuperview()
         }
+        cardView?.layer.add(translationAnimation, forKey: "translation")
+        cardView?.layer.add(rotationAnimation, forKey: "rotation")
+        CATransaction.commit()
+    }
+    
+    func didRemoveCardView(cardView: CardView) {
+        self.topCardView?.removeFromSuperview()
+        self.topCardView = self.topCardView?.nextCardView
     }
     
     fileprivate func setupCard(fromUser user: User) -> CardView {
@@ -116,6 +152,7 @@ class HomeController: UIViewController, SettingsControllerDelegate, RegisterAndL
         cardView.delegate = self
         cardView.cardViewModel = user.toCardViewModel()
         cardDeckView.addSubview(cardView)
+        cardDeckView.sendSubviewToBack(cardView)
         cardView.fillSuperview()
         return cardView
     }
