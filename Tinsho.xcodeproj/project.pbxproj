@@ -31,6 +31,7 @@
 		42AAAAA622041B9F008E3F68 /* AgeRangeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42AAAAA522041B9F008E3F68 /* AgeRangeCell.swift */; };
 		42E511F22205749E0059ACCE /* SwipingPhotosController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E511F12205749E0059ACCE /* SwipingPhotosController.swift */; };
 		42E558192201130C006ADC28 /* SettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E558182201130C006ADC28 /* SettingsController.swift */; };
+		42E7CC59220B6D2C00DC05A8 /* MatchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42E7CC58220B6D2C00DC05A8 /* MatchView.swift */; };
 		7BBFA20A1954B1038BD396FA /* Pods_Tinsho.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD0CC04F0C18ACE4C2AF982C /* Pods_Tinsho.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +62,7 @@
 		42AAAAA522041B9F008E3F68 /* AgeRangeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgeRangeCell.swift; sourceTree = "<group>"; };
 		42E511F12205749E0059ACCE /* SwipingPhotosController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingPhotosController.swift; sourceTree = "<group>"; };
 		42E558182201130C006ADC28 /* SettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsController.swift; sourceTree = "<group>"; };
+		42E7CC58220B6D2C00DC05A8 /* MatchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchView.swift; sourceTree = "<group>"; };
 		D4712468CF3BBED542718783 /* Pods-Tinsho.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tinsho.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Tinsho/Pods-Tinsho.debug.xcconfig"; sourceTree = "<group>"; };
 		DD0CC04F0C18ACE4C2AF982C /* Pods_Tinsho.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tinsho.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5B341D8C051A653489BC9FE /* Pods-Tinsho.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tinsho.release.xcconfig"; path = "Pods/Target Support Files/Pods-Tinsho/Pods-Tinsho.release.xcconfig"; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				4251BFE521FB4FD70016853E /* CustomTxtField.swift */,
 				422787A52202B8670001B016 /* SettingsCell.swift */,
 				42AAAAA522041B9F008E3F68 /* AgeRangeCell.swift */,
+				42E7CC58220B6D2C00DC05A8 /* MatchView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 				427C01F721FF765600C79A04 /* Bindable.swift in Sources */,
 				4228830621F306980053B264 /* HomeController.swift in Sources */,
 				4251BFE821FB92650016853E /* RegistrationViewModel.swift in Sources */,
+				42E7CC59220B6D2C00DC05A8 /* MatchView.swift in Sources */,
 				4251BFE621FB4FD70016853E /* CustomTxtField.swift in Sources */,
 				4284AEA321F8BB96001CC774 /* HomeBottomControlsStackView.swift in Sources */,
 				426942C021FA099A00AC5BB9 /* Advertiser.swift in Sources */,

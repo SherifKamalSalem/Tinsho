@@ -145,18 +145,17 @@ class CardView: UIView {
         let transationDirection: CGFloat = gesture.translation(in: nil).x > 0 ? 1 : -1
         let shouldDismissCard = abs(gesture.translation(in: nil).x) > threshold
         
-        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.1, options: .curveEaseOut, animations: {
-            if shouldDismissCard {
-                self.frame = CGRect(x: 600 * transationDirection, y: 0, width: self.frame.width, height: self.frame.height)
+        if shouldDismissCard {
+            guard let homeController = self.delegate as? HomeController else { return }
+            if transationDirection == 1 {
+                homeController.handleLike()
             } else {
+                homeController.handleDislike()
+            }
+        } else {
+            UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.1, options: .curveEaseOut, animations: {
                 self.transform = .identity
-            }
-        }) { (_) in
-            self.transform = .identity
-            if shouldDismissCard {
-                self.removeFromSuperview()
-                self.delegate?.didRemoveCardView(cardView: self)
-            }
+            })
         }
     }
     
