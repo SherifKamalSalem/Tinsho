@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42057DC5220CDDF6002D8CD0 /* SendMessageButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42057DC4220CDDF6002D8CD0 /* SendMessageButton.swift */; };
+		42057DC7220CF121002D8CD0 /* KeepSwipingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42057DC6220CF121002D8CD0 /* KeepSwipingButton.swift */; };
 		420B9C7F220444D2004F9020 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420B9C7C220444D0004F9020 /* LoginController.swift */; };
 		420B9C80220444D2004F9020 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 420B9C7D220444D1004F9020 /* LoginViewModel.swift */; };
 		4215A09E21FBB4C800B55006 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4215A09D21FBB4C800B55006 /* GoogleService-Info.plist */; };
@@ -36,6 +38,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		42057DC4220CDDF6002D8CD0 /* SendMessageButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageButton.swift; sourceTree = "<group>"; };
+		42057DC6220CF121002D8CD0 /* KeepSwipingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeepSwipingButton.swift; sourceTree = "<group>"; };
 		420B9C7C220444D0004F9020 /* LoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
 		420B9C7D220444D1004F9020 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		4215A09D21FBB4C800B55006 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -174,6 +178,8 @@
 				422787A52202B8670001B016 /* SettingsCell.swift */,
 				42AAAAA522041B9F008E3F68 /* AgeRangeCell.swift */,
 				42E7CC58220B6D2C00DC05A8 /* MatchView.swift */,
+				42057DC4220CDDF6002D8CD0 /* SendMessageButton.swift */,
+				42057DC6220CF121002D8CD0 /* KeepSwipingButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -369,12 +375,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				4291AF3B2204E07C0095886C /* UserDetailsController.swift in Sources */,
+				42057DC7220CF121002D8CD0 /* KeepSwipingButton.swift in Sources */,
 				427C01F721FF765600C79A04 /* Bindable.swift in Sources */,
 				4228830621F306980053B264 /* HomeController.swift in Sources */,
 				4251BFE821FB92650016853E /* RegistrationViewModel.swift in Sources */,
 				42E7CC59220B6D2C00DC05A8 /* MatchView.swift in Sources */,
 				4251BFE621FB4FD70016853E /* CustomTxtField.swift in Sources */,
 				4284AEA321F8BB96001CC774 /* HomeBottomControlsStackView.swift in Sources */,
+				42057DC5220CDDF6002D8CD0 /* SendMessageButton.swift in Sources */,
 				426942C021FA099A00AC5BB9 /* Advertiser.swift in Sources */,
 				4228830421F306980053B264 /* AppDelegate.swift in Sources */,
 				42AAAAA622041B9F008E3F68 /* AgeRangeCell.swift in Sources */,
